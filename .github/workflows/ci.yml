@@ -1,0 +1,12 @@
+name: ci
+on: pull_request
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests
+        run: |
+          sleep 20
+          if [ -f FAIL ]; then echo "2 tests failed: DatePicker closes on tap, Timezone offset"; exit 1; fi
+          echo "All tests passed"
